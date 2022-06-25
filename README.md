@@ -13,8 +13,11 @@ Then a new repository was created on github, the .git remote url was copied and,
 
 ```
 git remote add origin <URL was pasted here>
+```
+The current branch main had no upstream branch, so this command was used to set the upstream
 
-git push origin main
+```
+git push --set-upstream origin main
 ```
 
 
