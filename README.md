@@ -1,5 +1,24 @@
 # Getting Started with Create React App
 
+## Setup CLI commands
+[sourced from here...](https://create-react-app.dev/docs/adding-typescript/)
+
+```
+npx create-react-app react-ts-demo --template typescript
+
+npm install --save typescript @types/node @types/react @types/react-dom @types/jest
+
+```
+Then a new repository was created on github, the .git remote url was copied and,
+
+```
+git remote add origin <URL was pasted here>
+
+git push origin main
+```
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
