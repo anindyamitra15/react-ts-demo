@@ -1,4 +1,4 @@
-import { createContext, FC, MutableRefObject, useEffect, useRef, useState } from 'react';
+import { createContext, FC, MutableRefObject, useContext, useEffect, useRef, useState } from 'react';
 import './App.css';
 import Emoji from './components/Emoji';
 
@@ -14,7 +14,7 @@ export const MoodContext = createContext(moods);
 const App: FC = () => {
   // "counter" is a number state initialised to 0, "setCounter" is a function which sets "counter'"
   const [counter, setCounter] = useState<number>(0);
-
+  const moodsFromContext = useContext(MoodContext);
   const BlinkerDivRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -24,6 +24,9 @@ const App: FC = () => {
     }, 2000);
 
     const interval = setInterval(() => {
+      moodsFromContext.happy = (moodsFromContext.happy === '🤩') ? '😁' : '🤩'; //TODO: check reloading
+      console.log(moodsFromContext.happy);
+
       if (BlinkerDivRef.current)
         BlinkerDivRef.current.hidden = !BlinkerDivRef.current.hidden;
     }, 1000);
