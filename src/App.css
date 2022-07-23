@@ -5,10 +5,17 @@
 .context {
   padding: 2%;
   width: 70%;
+}
+
+.light {
   color: #26506a;
   background-color: #288cff4a;
 }
 
+.dark {
+  color: #90cbf0;
+  background-color: #373737fb;
+}
 
 .blinker {
   margin: 2%;

@@ -1,34 +1,36 @@
-import { createContext, FC, useEffect, useRef, useState } from 'react';
-import './App.css';
-import Emoji from './components/Emoji';
-import RefnEffectDemo from './components/RefnEffectDemo';
-import StateDemo from './components/StateDemo';
-
+import { createContext, Dispatch, FC, SetStateAction, useState } from "react";
+import "./App.css";
+import ThemeContextDemo from "./components/ThemeContextDemo";
+import RefnEffectDemo from "./components/RefnEffectDemo";
+import StateDemo from "./components/StateDemo";
 
 //inspired from fireship
-const moods = {
-  happy: '🤩',
-  sad: '😥'
-};
+type Theme = "dark" | "theme";
+const theme: Theme = "dark";
 
-export const MoodContext = createContext(moods);
+export const ThemeContext = createContext<
+  [string, Dispatch<SetStateAction<string>>] | null
+>(null);
 
 const App: FC = () => {
+  const [theme, setTheme] = useState("dark");
 
-  
   return (
-    <MoodContext.Provider value={moods}>
+    <ThemeContext.Provider value={[theme, setTheme]}>
       <div className="App">
-        <p className="purpose">This repository will have various react hooks and redux experimented on it</p>
+        <p className="purpose">
+          This repository will have various react hooks and redux experimented
+          on it
+        </p>
         <StateDemo />
-        <div className="context">
-          <p>Below is the &lt;Emoji/&gt; component:</p>
-          <Emoji />
+        <div className={"context " + theme}>
+          <p>Below is the &lt;ThemeContextDemo/&gt; component:</p>
+          <ThemeContextDemo />
         </div>
         <RefnEffectDemo />
       </div>
-    </MoodContext.Provider>
+    </ThemeContext.Provider>
   );
-}
+};
 
 export default App;
